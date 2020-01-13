@@ -107,11 +107,14 @@ addons: |-
       - <FQDN>      # FQDN to access cattle server
   ---
   kind: Deployment
-  apiVersion: extensions/v1beta1
+  apiVersion: apps/v1
   metadata:
     namespace: cattle-system
     name: cattle
   spec:
+    selector:
+      matchLabels:
+        app: cattle
     replicas: 1
     template:
       metadata:
